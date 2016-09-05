@@ -1,0 +1,45 @@
+    <div class="page-header">
+        <h1>Socio - Busca por CPF </h1>
+    </div>
+	<div class="row">
+		<form action="" method="POST" >
+		  <div class="form-group">
+			<label for="cpf">CPF</label>
+			<?=$this->form->getElement("cpf");?>			
+		  </div>
+
+		  <button type="submit" class="btn btn-default">Buscar</button>
+		</form>
+	</div>	
+<?php	if (count($this->socios)>0) {	?>
+		  <div class="row">
+			<div class="col-md-12">
+			  <table class="table table-striped">
+				<thead>
+				  <tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>E-mail</th>
+					<th></th>
+					
+				  </tr>
+				</thead>
+				<tbody>
+		<?php	foreach ($this->socios as $soc) {?>
+				  <tr>
+					<td><?php echo $soc->getId(); ?></td>
+					<td><?php echo $soc->getNome(); ?></td>
+					<td><?php echo $soc->getCpf(); ?></td>
+					<td><?php echo $soc->getEmail(); ?></td>
+					<td><a href="<?php echo $this->url(array('id'=>$soc->getId()),'visualizar-socio',true)?>"> Visualizar</a> | <a href="<?php echo $this->url(array('id'=>$soc->getId()),'editar-socio',true)?>"> Editar</a> | <a onclick="return confirm('Você tem certeza que deseja apagar esse registro?');" href="<?php echo $this->url(array('id'=>$soc->getId()),'remover-socio',true)?>"> Remover</a></td>
+				  </tr>
+					
+			<?php	}?>
+				</tbody>
+			  </table>
+			</div>
+		  </div>
+<?php	}?>		
+
+   

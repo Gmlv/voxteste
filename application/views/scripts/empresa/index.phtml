@@ -1,0 +1,35 @@
+      <div class="page-header">
+        <h1>Empresas</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome Fantasia</th>
+                <th>CNPJ</th>
+                <th>Razão Social</th>
+                <th></th>
+				
+              </tr>
+            </thead>
+            <tbody>
+	<?php	if (count($this->empresas)>0) {
+				foreach ($this->empresas as $emp) {?>
+				  <tr>
+					<td><?php echo $emp->getId(); ?></td>
+					<td><?php echo $emp->getNomeFantasia(); ?></td>
+					<td><?php echo $emp->getCnpj(); ?></td>
+					<td><?php echo $emp->getRazaoSocial(); ?></td>
+					<td><a href="<?php echo $this->url(array('id'=>$emp->getId()),'visualizar-empresa',true)?>"> Visualizar</a> | <a href="<?php echo $this->url(array('id'=>$emp->getId()),'editar-empresa',true)?>"> Editar</a> | <a onclick="return confirm('Você tem certeza que deseja apagar esse registro?');" href="<?php echo $this->url(array('id'=>$emp->getId()),'remover-empresa',true)?>"> Remover</a></td>
+				  </tr>
+					
+		<?php	}
+			}?>		
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+   
